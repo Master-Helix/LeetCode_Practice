@@ -117,18 +117,9 @@ class Solution {
         int l=solve(node->left);
         int r=solve(node->right);
         
-        if(!node->left && !node->right)
-        {
-            int ans=node->data;
-            node->data=0;
-            return ans;
-        }
-        else
-        {
-            int ans=l+r+node->data;
+       int ans=l+r+node->data;
             node->data=l+r;
             return ans;
-        }
     }
     
     
