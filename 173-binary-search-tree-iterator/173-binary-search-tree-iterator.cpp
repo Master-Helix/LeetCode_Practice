@@ -12,34 +12,29 @@
 class BSTIterator {
 public:
     
-    vector<int>v;
-    int p=-1;
-    
-    void inorder(TreeNode *root)
+   stack<TreeNode *>s;
+    void push_all(TreeNode *root)
     {
-        if(!root)
-            return;
-        inorder(root->left);
-        v.push_back(root->val);
-        inorder(root->right);
+        while(root)
+        {
+            s.push(root);
+            root=root->left;
+        }
     }
     
-    
     BSTIterator(TreeNode* root) {
-        inorder(root);
+        push_all (root);
     }
     
     int next() {
-        p++;
-        return v[p];
+        TreeNode *temp=s.top();
+        s.pop();
+        push_all(temp->right);
+        return temp->val;
     }
     
     bool hasNext() {
-        if(p==-1)
-            return true;
-        if(p<v.size()-1)
-            return true;
-        return false;
+        return !s.empty();
     }
 };
 
