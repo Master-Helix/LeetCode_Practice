@@ -3,7 +3,6 @@ public:
     bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
         
         stack<int>s;
-        s.push(pushed[0]);
         int i=0,j=0;
         int n=pushed.size();
         while(j<n)
