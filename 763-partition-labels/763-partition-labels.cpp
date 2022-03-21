@@ -15,7 +15,7 @@ public:
             int j=i;
             int maxi=arr[s[j]];
             int ctr=0;
-            while(j<maxi)
+            while(j<=maxi)
             {
                 ctr++;
                 if(arr[s[j]]>maxi)
@@ -24,8 +24,8 @@ public:
                 }
                 j++;
             }
-            v.push_back(ctr+1);
-            i=j+1;
+            v.push_back(ctr);
+            i=j;
         }
         return v;
     }
