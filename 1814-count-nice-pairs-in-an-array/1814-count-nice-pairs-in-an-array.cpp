@@ -15,7 +15,7 @@ public:
     int countNicePairs(vector<int>& nums) {
         
         vector<int>v;
-        unordered_map<int,int>m;
+        map<int,int>m;
         long long ans=0;
         for(int x:nums)
         {
