@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    // similar to Fibonacci number
     int climbStairs(int n) {
         
         int dp[n+1];
