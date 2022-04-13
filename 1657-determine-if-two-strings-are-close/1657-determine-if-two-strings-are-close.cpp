@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool closeStrings(string word1, string word2) {
-        unordered_map<char,int>m1,m2;
-        unordered_set<char>s;
+        map<char,int>m1,m2;
+        set<char>s;
         for(auto it:word1)
         {
             m1[it]++;
