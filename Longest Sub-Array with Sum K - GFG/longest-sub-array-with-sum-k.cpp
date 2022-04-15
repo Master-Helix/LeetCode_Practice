@@ -17,7 +17,7 @@ class Solution{
             pre+=arr[i];
             if(pre==k)
             {
-                maxi=i+1;
+                maxi=max(maxi,i+1);
             }
             if(m.find(pre)==m.end())
             {
