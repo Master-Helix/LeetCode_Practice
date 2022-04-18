@@ -12,22 +12,22 @@
 class Solution {
 public:
     
-    void inorder(TreeNode *root, int k,int &val,int &ctr)
+    void solve(TreeNode *root,int &k,priority_queue<int> &p)
     {
         if(!root)
             return;
-        inorder(root->left,k,val,ctr);
-        ctr++;
-        if(ctr==k)
-            val=root->val;
-        inorder(root->right,k,val,ctr);
+        solve(root->left,k,p);
+        p.push(root->val);
+        if(p.size()>k)
+            p.pop();
+        solve(root->right,k,p);
     }
     
     int kthSmallest(TreeNode* root, int k) {
+       priority_queue<int>p;
         
-        int val=-1;
-        int ctr=0;
-        inorder(root,k,val,ctr);
-        return val;
+        solve(root,k,p);
+        return p.top();
     }
+    
 };
