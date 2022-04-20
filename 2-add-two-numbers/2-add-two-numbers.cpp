@@ -10,58 +10,47 @@
  */
 class Solution {
 public:
-  
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         
-        ListNode *a1=l1;
-        ListNode *a2=l2;
-        ListNode *ans=NULL;
+        
+        ListNode *ans=new ListNode(-1);
         ListNode *t=ans;
         
+        ListNode *a1=l1,*a2=l2;
         int carry=0;
-        while(a1!=NULL && a2!=NULL)
+        while(a1 && a2)
         {
-            int v=(a1->val)+(a2->val)+carry;
-            if(ans==NULL)
-            {
-                ans=new ListNode(v%10);
-                t=ans;
-            }
-            else{
-            ans->next=new ListNode(v%10);
+            int k=a1->val+a2->val+carry;
+            carry=k/10;
+            ans->next=new ListNode(k%10);
             ans=ans->next;
-            }
-            carry=v/10;
             a1=a1->next;
-            a2=a2->next;
-        }
-        
-        while(a2)
-        {
-            int v=a2->val+carry;
-            ans->next=new ListNode(v%10);
-            ans=ans->next;
-            carry=v/10;
             a2=a2->next;
         }
         
         while(a1)
         {
-            int v=a1->val+carry;
-            ans->next=new ListNode(v%10);
+            int k=a1->val+carry;
+            carry=k/10;
+            ans->next=new ListNode(k%10);
             ans=ans->next;
-            carry=v/10;
             a1=a1->next;
         }
         
-        if(carry>0)
+         while(a2)
         {
-            ans->next=new ListNode(carry);
-            carry=0;
+            int k=a2->val+carry;
+            carry=k/10;
+            ans->next=new ListNode(k%10);
             ans=ans->next;
+            a2=a2->next;
         }
         
-        return t;
-        
+        if(carry==1)
+        {
+            ans->next=new ListNode(1);
+            carry=0;
+        }
+        return t->next;
     }
 };
