@@ -12,71 +12,33 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         
-        ListNode *temp=NULL;
-        ListNode *ans=NULL;
+        ListNode *ans=new ListNode(-1);
+        ListNode *t=ans;
         
-        while(list1!=NULL && list2!=NULL)
+        while(list1 && list2)
         {
             if(list1->val<=list2->val)
             {
-                if(temp==NULL)
-                {
-                   temp=new ListNode(list1->val);
-                    ans=temp;
-                }
-                else
-                {
-                    temp->next=new ListNode(list1->val);
-                    temp=temp->next;
-                }
+                ans->next=new ListNode(list1->val);
                 list1=list1->next;
+                ans=ans->next;
             }
-            
             else
             {
-                 if(temp==NULL)
-                {
-                   temp=new ListNode(list2->val);
-                    ans=temp;
-                }
-                else
-                {
-                    temp->next=new ListNode(list2->val);
-                    temp=temp->next;
-                }
+                ans->next=new ListNode(list2->val);
                 list2=list2->next;
+                ans=ans->next;
             }
         }
         
-        while(list1!=NULL)
+        if(list1)
         {
-            if(temp==NULL)
-            {
-                temp=new ListNode(list1->val);
-                ans=temp;
-            }
-            else
-            {
-                temp->next=new ListNode(list1->val);
-                temp=temp->next;
-            }
-            list1=list1->next;
+            ans->next=list1;
         }
-        
-        while(list2!=NULL)
+        if(list2)
         {
-            if(temp==NULL)
-            {
-                temp=new ListNode(list2->val);
-                ans=temp;
-            }
-            else
-            {
-                temp->next=new ListNode(list2->val);
-                temp=temp->next;
-            }
-            list2=list2->next;
+            ans->next=list2;
         }
-        return ans;
+        return t->next;
     }
 };
