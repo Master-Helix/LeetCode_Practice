@@ -4,20 +4,43 @@ public:
         
     }
     
-    unordered_map<int,int>m;
+    vector<pair<int,int>>v;
     void put(int key, int value) {
-        m[key]=value;
+        int flag=0;
+        for(int i=0;i<v.size();i++)
+        {
+            if(v[i].first==key)
+            {
+                v[i].second=value;
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0)
+        {
+            v.push_back({key,value});
+        }
     }
     
     int get(int key) {
-        if(m.find(key)==m.end())
+        for(int i=0;i<v.size();i++)
+        {
+            if(v[i].first==key && v[i].second!=-1)
+            {
+                return v[i].second;
+            }
+        }
             return -1;
-        return m[key];
     }
     
     void remove(int key) {
-        if(m.find(key)!=m.end())
-            m.erase(key);
+        for(int i=0;i<v.size();i++)
+        {
+            if(v[i].first==key)
+            {
+                v[i].second=-1;
+            }
+        }
     }
 };
 
