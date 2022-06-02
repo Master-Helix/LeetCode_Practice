@@ -15,7 +15,7 @@ public:
             sum1+=cardPoints[i];
         }
         
-        int maxi=sum-sum1;
+        int maxi=INT_MIN;
         for(int i=m;i<n;i++){
             int rem=sum-sum1;
             maxi=max(maxi,rem);
