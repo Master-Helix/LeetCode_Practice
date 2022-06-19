@@ -13,15 +13,15 @@ class Solution
     
     int FindMaxSum(int arr[], int n)
     {
-        vector<int>dp(n+1,0);
-        dp[0]=0;
-        dp[1]=arr[0];
+        vector<int>dp(n,0);
+        dp[0]=arr[0];
+        dp[1]=max(arr[0],arr[1]);
         
-        for(int i=2;i<=n;i++){
-            int a=dp[i-1],b=arr[i-1]+dp[i-2];
+        for(int i=2;i<n;i++){
+            int a=dp[i-1],b=arr[i]+dp[i-2];
             dp[i]=max(a,b);
         }
-        return dp[n];
+        return dp[n-1];
     }
 };
 
