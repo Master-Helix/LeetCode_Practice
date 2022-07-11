@@ -8,7 +8,7 @@ public:
         if(dp[i]!=-1) return dp[i];
         
         int mini=1e9;
-        for(int j=i+1;j<=i+nums[i];j++){
+        for(int j=i+1;j<=nums[i]+i;j++){
             int ans=1+solve(j,nums,dp);
             mini=min(mini,ans);
         }
@@ -16,9 +16,9 @@ public:
     }
     
     int jump(vector<int>& nums) {
-        
         int n=nums.size();
         vector<int>dp(n,-1);
         return solve(0,nums,dp);
+        
     }
 };
