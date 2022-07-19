@@ -23,14 +23,12 @@ public:
                 
                 else{
                     
-                    while(sum>target && i<=j){
+                    while(sum>=target && i<=j){
                         ans=min(ans,j-i+1); 
                         sum-=nums[i++];
                         
                     }
-                    if(sum==target){
-                        ans=min(ans,j-i+1);
-                    }
+                   
                    j++;
                 }
             }
