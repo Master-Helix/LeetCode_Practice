@@ -30,7 +30,6 @@ public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
         
         ListNode *temp1=head;
-        ListNode *temp2=head;
         ListNode *t=temp1;
     
         if(!temp1->next) return head;
