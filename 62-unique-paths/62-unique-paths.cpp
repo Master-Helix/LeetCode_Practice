@@ -1,16 +1,21 @@
 class Solution {
 public:
    
+    int solve(int i,int j,vector<vector<int>>&dp){
+        if(i<0 || j<0||i>=dp.size() || j>=dp[0].size()) return 0;
+        
+        if(i==0 && j==0) return 1;
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        int a=solve(i-1,j,dp);
+        int b=solve(i,j-1,dp);
+        return dp[i][j]=a+b;
+        
+    }
+    
          int uniquePaths(int m, int n) {
-        
-        int k=m+n-2;
-        int a=m-1;
-        double ans=1;
-        
-        for(int i=1;i<=a;i++)
-        {
-            ans=ans*(k-a+i)/i;
-        }
-        return (int)ans;
+             
+             vector<vector<int>>dp(m,vector<int>(n,-1));
+             return solve(m-1,n-1,dp);
     }
 };
