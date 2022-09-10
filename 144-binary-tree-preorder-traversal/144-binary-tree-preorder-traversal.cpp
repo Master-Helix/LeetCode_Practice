@@ -11,21 +11,30 @@
  */
 class Solution {
 public:
-    
-    void rakshit(vector<int>&v,TreeNode *root){
-        if(!root){
-            return;
-        }
-        v.push_back(root->val);
-        rakshit(v,root->left);
-        rakshit(v,root->right);
-    }
-    
     vector<int> preorderTraversal(TreeNode* root) {
-        
-        vector<int>v;
-        rakshit(v,root);
-        return v;
-        
+         vector<int>preorder;
+        TreeNode *curr=root;
+        while(curr){
+            if(!curr->left){
+                preorder.push_back(curr->val);
+                curr=curr->right;
+            }
+            else{
+                TreeNode *prev=curr->left;
+                while(prev->right && prev->right!=curr){
+                    prev=prev->right;
+                }
+                if(prev->right==NULL){
+                    prev->right=curr;
+                    preorder.push_back(curr->val);
+                    curr=curr->left;
+                }
+                else{
+                    prev->right=NULL;
+                    curr=curr->right;
+                }
+            }
+        }
+        return preorder;
     }
 };
