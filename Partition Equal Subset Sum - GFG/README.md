@@ -1,7 +1,6 @@
 # Partition Equal Subset Sum
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array&nbsp;<strong>arr[]</strong> of size&nbsp;<strong>N</strong>, check if&nbsp;it can be partitioned into two parts such that the sum of elements in both parts&nbsp;is the same.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array&nbsp;<strong>arr[]</strong> of size&nbsp;<strong>N</strong>, check if&nbsp;it can be partitioned into two parts such that the sum of elements in both parts&nbsp;is the same.</span></p>
 
 <p><strong><span style="font-size:18px">Example 1:</span></strong></p>
 
@@ -32,5 +31,4 @@ You do not need to read input or print anything. Your task is to complete the fu
 <span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ N ≤ 100<br>
 1 ≤ arr[i] ≤ 1000</span></p>
- <p></p>
-            </div>
+</div>
