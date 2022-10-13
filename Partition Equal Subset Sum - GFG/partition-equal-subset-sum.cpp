@@ -1,42 +1,52 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 // Initial Template for C++
 
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 // User function Template for C++
 
 class Solution{
 public:
 
-bool solve(int i,int arr[],int k,vector<vector<int>>&dp){
-    if(k==0) return true;
-    if(i==0) return arr[i]==k;
-    if(dp[i][k]!=-1) return dp[i][k];
-    
-    bool not_take=solve(i-1,arr,k,dp);
-    bool take=false;
-    if(arr[i]<=k) take=solve(i-1,arr,k-arr[i],dp);
-    return dp[i][k]=not_take||take;
-}
+ bool solve(int i,int j,int n,int nums[],vector<vector<int>>&dp){
+        
+        
+        if(i==0){
+            if(j==nums[0]) return true;
+            return false;
+        }
+        if(j==0) return true;
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        bool a=solve(i-1,j,n,nums,dp);
+        bool b=false;
+        if(j>=nums[i]){
+            b=solve(i-1,j-nums[i],n,nums,dp);
+            return dp[i][j]=a|b;
+        }
+        return dp[i][j]=a||b;
+    }
 
-
-    int equalPartition(int n, int arr[])
+    int equalPartition(int n, int nums[])
     {
-        // code here
+         
         int sum=0;
         for(int i=0;i<n;i++){
-            sum+=arr[i];
+            sum+=nums[i];
         }
-        if(sum%2)return false;
-        int k=sum/2;
-        vector<vector<int>>dp(n,vector<int>(k+1,-1));
-        return solve(n-1,arr,k,dp);
+        
+        if(sum%2!=0) return false;
+        
+        vector<vector<int>>dp(n,vector<int>((sum/2)+1,-1));
+        
+        return solve(n-1,sum/2,n,nums,dp);
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 
 int main(){
     int t;
@@ -55,4 +65,5 @@ int main(){
             cout<<"NO\n";
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
